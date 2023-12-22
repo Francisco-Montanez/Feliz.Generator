@@ -1,7 +1,0 @@
-﻿group FakeBuild
-    Fake.Core.Target
-    Fake.DotNet.Cli
-    Fake.DotNet.Paket
-    Fake.JavaScript.Npm
-    System.Text.Json
-    MSBuild.StructuredLogger

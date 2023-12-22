@@ -5,12 +5,9 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <None Include="paket.references" />
     <Compile Include="Utils.fs" />
     <Compile Include="Domain.fs" />
     <Compile Include="Render.fs" />
   </ItemGroup>
-  
-  <Import Project="..\..\.paket\Paket.Restore.targets" />
   
 </Project>

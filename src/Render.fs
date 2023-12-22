@@ -19,8 +19,8 @@ module private WriterHelpers =
             allComponents
             |> List.tryFind (fun bc -> bc.MethodName = baseMethodName)
             |> function
-               | Some bc -> bc
-               | None -> failwithf "Component '%s' inherits non-existent component '%s'" comp.MethodName baseMethodName
+                | Some bc -> bc
+                | None -> failwithf "Component '%s' inherits non-existent component '%s'" comp.MethodName baseMethodName
           inner (baseComp :: currentHierarchy) baseComp
     inner [] comp
 
@@ -84,7 +84,7 @@ module GetLines =
       )
 
     if propsAndRegularNonExtensionOverloads.IsEmpty then []
-    else 
+    else
       let allOverloadsAreInline =
         propsAndRegularNonExtensionOverloads
         |> List.forall (fun (_, os) -> os |> List.forall (fun o -> o.IsInline))
@@ -111,7 +111,7 @@ module GetLines =
       )
 
     if propsAndRegularExtensionOverloads.IsEmpty then []
-    else 
+    else
       [
         "[<AutoOpen; EditorBrowsable(EditorBrowsableState.Never)>]"
         sprintf "module %sExtensions =" comp.MethodName
@@ -135,7 +135,7 @@ module GetLines =
       )
 
     if propsAndEnumOverloads.IsEmpty then []
-    else 
+    else
       [
         sprintf "module %s =" comp.MethodName
         for prop, overloads in propsAndEnumOverloads do
@@ -229,7 +229,7 @@ module Render =
           let ancestors = getAncestors api.Components c
           let propsToInherit =
             ancestors
-            |> List.collect (fun c -> 
+            |> List.collect (fun c ->
                 c.Props
                 |> List.map (fun p -> { p with DocLines = sprintf "*Inherited from `%s`*" c.MethodName :: "" :: p.DocLines })
             )
